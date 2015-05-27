@@ -11,7 +11,8 @@
     "express-session": "^1.11.2",
     "jade": "^1.10.0",
     "method-override": "^2.3.3",
-    "mongoose": "^4.0.3"
+    "mongoose": "^4.0.3",
+    "spark-md5": "0.0.5"
   },
   "devDependencies": {
     "gulp": "^3.8.11",
