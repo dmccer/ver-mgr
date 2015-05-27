@@ -43,7 +43,7 @@ module.exports = {
   },
 
   // 添加项目的静态资源信息
-  post: function(req, res) {
+  add: function(req, res) {
     repos.create({
       name: req.body.name,
       owner: req.body.owner,
