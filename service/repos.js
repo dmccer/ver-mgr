@@ -12,7 +12,7 @@ function unexpect(req, res) {
   });
 }
 
-module.exports = {
+var repos_ctrl = {
   // 获取单个项目的静态资源信息
   get: function(req, res) {
     repos.findOne({
@@ -38,8 +38,6 @@ module.exports = {
         data: doc.toObject()
       });
     });
-
-    unexpect(req, res);
   },
 
   // 添加项目的静态资源信息
@@ -66,8 +64,6 @@ module.exports = {
         data: doc.toObject()
       });
     });
-
-    unexpect(req, res);
   },
 
   // 获取项目列表
@@ -87,21 +83,19 @@ module.exports = {
         }
 
         logger.info('查询项目列表成功');
-        logger.info(req.query && JSON.stringify(req.query) || 'all');
+        logger.info('查询参数: ' + req.query && JSON.stringify(req.query) || 'all');
 
         return res.status(200).json({
-          data: docs.toObject()
+          data: docs
         });
       });
-
-    unexpect(req, res);
   },
 
   // 更新单个项目静态资源信息
   update: function(req, res) {
     logger.trace('检测项目是否存在');
 
-    var self = this;
+    console.log(this);
 
     repos.findOneAndUpdate({
       name: req.body.name,
@@ -123,7 +117,7 @@ module.exports = {
         logger.trace('没找到您要更新的项目');
         logger.trace('正在添加项目静态资源信息...');
 
-        return self.post(req, res);
+        return repos_ctrl.add(req, res);
       }
 
       logger.info('更新项目静态资源信息成功');
@@ -133,7 +127,7 @@ module.exports = {
         data: doc.toObject()
       });
     });
-
-    unexpect(req, res);
   }
 };
+
+module.exports = repos_ctrl;

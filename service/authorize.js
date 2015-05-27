@@ -4,8 +4,9 @@ var logger = require('../logger')('authorize');
 
 module.exports = function(req, res, next) {
   logger.info('正在进行身份验证...');
-  var authorization = req.headers.Authorizatioin;
-  var secret_token = SparkMD5.hash(config.access_secret + config.subffix, true);
+
+  var authorization = req.headers.authorization;
+  var secret_token = SparkMD5.hash(config.access_secret + config.subffix);
 
   if (!authorization || authorization !== secret_token) {
     logger.fatal('身份验证失败');
