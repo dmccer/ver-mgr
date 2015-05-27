@@ -99,6 +99,10 @@ module.exports = {
 
   // 更新单个项目静态资源信息
   update: function(req, res) {
+    logger.trace('检测项目是否存在');
+
+    var self = this;
+
     repos.findOneAndUpdate({
       name: req.body.name,
       owner: req.body.owner
@@ -106,13 +110,20 @@ module.exports = {
       version: req.body.version,
       url: req.body.url
     }, function(err, doc) {
-      if (err || !doc) {
+      if (err) {
         logger.fatal('更新项目静态资源信息失败');
-        logger.info(err && err.message || '没找到您要更新的项目');
+        logger.info(err && err.message);
 
         return res.status(500).json({
           msg: '更新项目静态资源信息失败'
         });
+      }
+
+      if (!doc) {
+        logger.trace('没找到您要更新的项目');
+        logger.trace('正在添加项目静态资源信息...');
+
+        return self.post(req, res);
       }
 
       logger.info('更新项目静态资源信息成功');
