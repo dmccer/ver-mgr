@@ -20,7 +20,7 @@
     "gulp-less": "^3.0.3"
   },
   "scripts": {
-    "prestart": "./node_modules/.bin/gulp",
+    "prestart": "npm install; ./node_modules/.bin/gulp",
     "start": "node app.js"
   },
   "repository": {
