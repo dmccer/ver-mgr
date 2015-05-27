@@ -14,6 +14,9 @@ var logger = require('./logger')('expres');
 
 var app = express();
 
+// 连接数据库
+require('./db');
+
 app.set('port', process.env.PORT || 9876);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
