@@ -1,8 +1,9 @@
 var http = require('http');
 var express = require('express');
 var path = require('path');
-var authorize = require('./service/authorize');
 var api = require('./api-v1');
+var web = require('./web');
+var authorize = require('./service/authorize');
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -32,19 +33,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-// 首页
-app
-  .route('/')
-  .get(function(req, res, next) {
-    res.status(200).render('welcome');
-  });
+app.use('/', web);
 
-app.use(authorize);
+// 验证权限
+app.use('/v1', authorize);
 app.use('/v1', api);
 
-if ('development' === app.get('env')) {
-  app.use(errorHandler());
-}
+// app.use(errorHandler());
 
 var server = http.createServer(app);
 server.listen(app.get('port'), function() {

@@ -13,7 +13,7 @@ module.exports = function(req, res, next) {
     logger.info('用户 token: ' + authorization);
     logger.info('正确 token: ' + secret_token);
 
-    res.status(403).json({
+    res.status(403).render('error', {
       msg: '您没有权限'
     });
 
