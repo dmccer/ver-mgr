@@ -11,6 +11,7 @@
     "express-session": "^1.11.2",
     "jade": "^1.10.0",
     "log4js": "^0.6.25",
+    "marked": "^0.3.3",
     "method-override": "^2.3.3",
     "mongoose": "^4.0.3",
     "spark-md5": "0.0.5"

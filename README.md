@@ -15,7 +15,7 @@ PARAMS:
 {
   owner: 'f2e'
 }
-```
+```  
 RESPONSE:  
 ```javascript
 {
