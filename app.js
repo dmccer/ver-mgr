@@ -32,6 +32,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+// 首页
+app
+  .route('/')
+  .get(function(req, res, next) {
+    res.status(200).render('welcome');
+  });
+
 app.use(authorize);
 app.use('/v1', api);
 

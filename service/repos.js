@@ -80,35 +80,39 @@ var repos_ctrl = {
       });
   },
 
-  // 更新单个项目静态资源信息
+  // 更新或添加单个项目静态资源信息
   update: function(req, res) {
     logger.trace('检测项目是否存在');
 
-    repos.findOneAndUpdate({
+    var data = {
       name: req.params.name,
-      owner: req.body.owner
-    }, {
+      owner: req.body.owner,
       version: req.body.version,
-      url: req.body.url
+      update_time: Date.now
+    };
+
+    if (req.body.url) {
+      data.url = req.body.url;
+    }
+
+    repos.findOneAndUpdate({
+      name: data.name,
+      owner: data.owner
+    }, data, {
+      new: true,
+      upsert: true
     }, function(err, doc) {
       if (err) {
-        logger.fatal('更新项目静态资源信息失败');
+        logger.fatal('更新或添加项目静态资源信息失败');
         logger.info(err && err.message);
 
         return res.status(500).json({
-          msg: '更新项目静态资源信息失败'
+          msg: '更新或添加项目静态资源信息失败'
         });
       }
 
-      if (!doc) {
-        logger.trace('没找到您要更新的项目');
-        logger.trace('正在添加项目静态资源信息...');
-
-        return repos_ctrl.add(req, res);
-      }
-
-      logger.info('更新项目静态资源信息成功');
-      logger.info(JSON.stringify(req.body));
+      logger.info('更新或添加项目静态资源信息成功');
+      logger.info(JSON.stringify(data));
 
       return res.status(200).json({
         data: doc.toObject()

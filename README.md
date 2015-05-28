@@ -68,10 +68,10 @@ RESPONSE:
 }
 ```  
 
-### 更新或添加项目静态资源信息
+### 添加或更新项目静态资源信息
 
 URL: '/repos/:name'  
-METHOD: 'PUT'  
+METHOD: 'POST'  
 PARAMS:  
 ```javascript
 {
