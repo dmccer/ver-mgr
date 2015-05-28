@@ -88,7 +88,7 @@ var repos_ctrl = {
       name: req.params.name,
       owner: req.body.owner,
       version: req.body.version,
-      update_time: Date.now
+      update_time: Date.now()
     };
 
     if (req.body.url) {
