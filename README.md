@@ -4,11 +4,11 @@ ver-mgr
 静态资源项目版本管理
 
 ## API
-http://v.guluabc.com
+http://v.guluabc.com/v1/
 
 ### 获取单个项目静态资源信息
 
-URL: `/repos/:name`  
+URL: `repos/:name`  
 METHOD: `GET`  
 PARAMS:  
 ```javascript
@@ -33,7 +33,7 @@ RESPONSE:
 
 ### 查询项目静态资源信息列表
 
-URL: `/repos`  
+URL: `repos`  
 METHOD: `GET`  
 PARAMS: **可选**  
 ```javascript
@@ -70,7 +70,7 @@ RESPONSE:
 
 ### 添加或更新项目静态资源信息
 
-URL: '/repos/:name'  
+URL: 'repos/:name'  
 METHOD: 'POST'  
 PARAMS:  
 ```javascript
