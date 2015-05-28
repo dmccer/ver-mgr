@@ -1,22 +1,11 @@
 var repos = require('../model/repos');
 var logger = require('../logger')('api');
 
-function unexpect(req, res) {
-  // 真的会进入到这里吗？
-  // 不妨试一试
-  logger.error('这真的是个意外，请重试');
-  logger.info('请求参数: ' + req.body && JSON.stringify(req.body));
-
-  res.status(500).json({
-    msg: '这真的是个意外，请重试'
-  });
-}
-
 var repos_ctrl = {
   // 获取单个项目的静态资源信息
   get: function(req, res) {
     repos.findOne({
-      name: req.query.name,
+      name: req.params.name,
       owner: req.query.owner
     }, function(err, doc) {
       if (err) {
@@ -43,7 +32,7 @@ var repos_ctrl = {
   // 添加项目的静态资源信息
   add: function(req, res) {
     repos.create({
-      name: req.body.name,
+      name: req.params.name || req.body.name,
       owner: req.body.owner,
       url: req.body.url,
       version: req.body.version
@@ -95,10 +84,8 @@ var repos_ctrl = {
   update: function(req, res) {
     logger.trace('检测项目是否存在');
 
-    console.log(this);
-
     repos.findOneAndUpdate({
-      name: req.body.name,
+      name: req.params.name,
       owner: req.body.owner
     }, {
       version: req.body.version,
