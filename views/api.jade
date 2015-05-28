@@ -1,0 +1,10 @@
+extends ./layout.jade
+
+block title
+  title 接口介绍 - VerMgr 静态资源版本管理
+
+block css
+  link(rel='stylesheet', href='/css/api.css')
+
+block content
+  include:markdown ../README.md

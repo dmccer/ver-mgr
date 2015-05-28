@@ -2,10 +2,6 @@ var express = require('express');
 var router = express.Router();
 var repos = require('./service/repos');
 
-router.get('/', function (req, res) {
-  res.status(200).render('api');
-});
-
 // 查询项目列表
 router.get('/repos', repos.list);
 // 获取单个项目
