@@ -89,12 +89,15 @@ var repos_ctrl = {
       name: req.params.name,
       owner: req.body.owner,
       version: req.body.version,
-      download: req.body.download,
       update_time: Date.now()
     };
 
     if (req.body.url) {
       data.url = req.body.url;
+    }
+
+    if (req.body.download) {
+      data.download = req.body.download;
     }
 
     // 这里有个bug
