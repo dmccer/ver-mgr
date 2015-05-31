@@ -6,6 +6,7 @@ var repos = new Schema({
   url: String,
   version: String,
   owner: String,
+  download: String,
   create_time: { type: Date, default: Date.now },
   update_time: { type: Date, default: Date.now }
 });
