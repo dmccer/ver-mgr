@@ -35,6 +35,7 @@ var repos_ctrl = {
       name: req.params.name || req.body.name,
       owner: req.body.owner,
       url: req.body.url,
+      download: req.body.download,
       version: req.body.version
     }, function(err, doc) {
       if (err || !doc) {
@@ -88,6 +89,7 @@ var repos_ctrl = {
       name: req.params.name,
       owner: req.body.owner,
       version: req.body.version,
+      download: req.body.download,
       update_time: Date.now()
     };
 
