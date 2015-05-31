@@ -97,6 +97,8 @@ var repos_ctrl = {
       data.url = req.body.url;
     }
 
+    // 这里有个bug
+    // create_time 会更新
     repos.findOneAndUpdate({
       name: data.name,
       owner: data.owner
