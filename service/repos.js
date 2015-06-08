@@ -1,3 +1,4 @@
+var _ = require('lodash');
 var repos = require('../model/repos');
 var logger = require('../logger')('api');
 
@@ -91,6 +92,12 @@ var repos_ctrl = {
       version: req.body.version,
       update_time: Date.now()
     };
+
+    if (!_.trim(data.name) || !_.trim(data.owner) || !_.trim(data.versioin)) {
+      return res.status(500).json({
+        msg: '缺少必传参数 name, owner, version'
+      });
+    }
 
     if (req.body.url) {
       data.url = req.body.url;
