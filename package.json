@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@git.guluabc.com:f2e/ver-mgr.git"
+    "url": "git@git.guluabc.com:node/ver-mgr.git"
   },
   "keywords": [
     "静态资源",
