@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 var log4js = require('log4js');
 var methodOverride = require('method-override');
 var session = require('express-session');
-var errorHandler = require('errorhandler');
+// var errorHandler = require('errorhandler');
 var logger = require('./logger')('vermgr');
 
 var app = express();
