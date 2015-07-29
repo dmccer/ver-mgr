@@ -16,7 +16,14 @@ var repos = new Schema({
   owner: String,
   // 静态包下载地址
   download: String,
-  // 服务器发布状态
+  // 服务器发布状态，默认未发布
+  // 0 - 未发布
+  // 1 - 正在下载项目资源
+  // 2 - 正在编译项目
+  // 3 - 正在发布到静态服务器
+  // 4 - 正在同步到七牛服务器
+  // 5 - 正在更新数据库版本
+  // 6 - 发布完成
   status: { type: Number, default: 0 },
   // 记录创建时间（首次发布时间）
   create_time: { type: Date, default: Date.now },
