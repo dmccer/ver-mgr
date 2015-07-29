@@ -23,7 +23,8 @@ var repos = new Schema({
   // 3 - 正在发布到静态服务器
   // 4 - 正在同步到七牛服务器
   // 5 - 正在更新数据库版本
-  // 6 - 发布完成
+  // 6 - 正在生成静态资源压缩包
+  // 7 - 发布完成
   status: { type: Number, default: 0 },
   // 记录创建时间（首次发布时间）
   create_time: { type: Date, default: Date.now },
