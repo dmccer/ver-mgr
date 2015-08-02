@@ -32,7 +32,7 @@ var repos_ctrl = {
       }
 
       if (!doc) {
-        return res.status(200).json({
+        return res.status(404).json({
           msg: '没有找到该项目'
         });
       }
