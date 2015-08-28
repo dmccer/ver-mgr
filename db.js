@@ -5,7 +5,14 @@ var logger = require('./logger')('mongodb');
 
 function connect() {
   logger.info('正在连接数据库...');
-  mongoose.connect(config.mongodb.url + ':' + config.mongodb.port + '/' + config.mongodb.name);
+  mongoose.connect(config.mongodb.url + ':' + config.mongodb.port + '/' + config.mongodb.name, {
+    db: { native_parser: true },
+    server: {
+      poolsize: 5
+    },
+    user: config.mongodb.user,
+    pass: config.mongodb.pass
+  });
   logger.info('数据库连接成功...');
 }
 
