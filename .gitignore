@@ -2,6 +2,7 @@
 qconf.json
 config.js
 public
+db
 
 # Numerous always-ignore extensions
 *.bak
