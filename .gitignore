@@ -3,6 +3,7 @@ qconf.json
 config.js
 public
 db
+dump.rdb
 
 # Numerous always-ignore extensions
 *.bak

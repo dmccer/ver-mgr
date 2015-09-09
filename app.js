@@ -4,6 +4,7 @@ var path = require('path');
 var api = require('./api-v1');
 var web = require('./web');
 var authorize = require('./service/authorize');
+var config = require('./config');
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -18,7 +19,7 @@ var app = express();
 // 连接数据库
 require('./db');
 
-app.set('port', process.env.PORT || 9876);
+app.set('port', process.env.PORT || config.port);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 app.use(log4js.connectLogger(logger, { level: 'auto' }));
